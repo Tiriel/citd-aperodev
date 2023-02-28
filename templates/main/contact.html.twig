@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Contact' %}
+
+{% block body %}
+<div class="example-wrapper w-75 m-auto">
+        <h1 class="pb-5">Contact form</h1>
+
+    {% if app.session.flashBag.peekAll|length > 0 %}
+        <aside>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+        </aside>
+    {% endif %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-primary">Send</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

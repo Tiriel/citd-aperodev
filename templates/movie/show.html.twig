@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}- {{ movie.title ?? 'Movie Not found' }}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    {% if movie.title %}
+    <h1>{{ movie.title }}</h1>
+
+    <article class="pt-5">
+        <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="float-end">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h5 class="mb-1">Id :</h5>
+                 <p class="mb-1">{{ movie.id }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">IMDb Id :</h5>
+                 <p class="mb-1">{{ movie.imdbId }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Rated :</h5>
+                 <p class="mb-1">{{ movie.rated }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Plot :</h5>
+                 <p class="mb-1">{{ movie.plot }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Genre :</h5>
+                 <p class="mb-1">{{ movie.genre }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Director :</h5>
+                 <p class="mb-1">{{ movie.director }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Country :</h5>
+                 <p class="mb-1">{{ movie.country }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Released at :</h5>
+                 <p class="mb-1">{{ movie.releasedAt|date('d F Y') }}</p>
+            </li>
+            <li class="list-group-item">
+                <h5 class="mb-1">Comments :</h5>
+                <a href="{# {{ path('app_comment_new', {'movie_id': movie.id}) }} #}">Leave comment</a>
+                <ul class="list-group">
+                {% for comment in movie.comments %}
+                    <li class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="h5 mb-1">{{ comment.title }}</h6>
+                            <small class="text-muted">{{ comment.postedAt|date('d F Y') }}</small>
+                            <b>Rated: {{ comment.rating }}/5&#x2B50;</b>
+                        </div>
+                        <p class="mb-1">{{ comment.content }}</p>
+                        <small class="text-muted">{{ comment.email|replace({'@': '[at]'}) }}</small>
+                    </li>
+                {% else %}
+                    <li class="list-group-item">No comments yet.</li>
+                {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </article>
+    {% else %}
+        <h1>Movie not found.</h1>
+    {% endif %}
+</div>
+{% endblock %}
