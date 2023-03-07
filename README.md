@@ -20,4 +20,4 @@ If using the Symfony CLI, you can start the dev server with `symfony serve -d`.
 Otherwise, you can start PHP dev server with `php -S 127.0.0.1:8000 -t public/`
 
 You can visualize the full result of the exercise immediately.
-To give a go at the challenge yourself, `git checkout 4f458edf95c38482a66e57e04d637c2e98d13267`
+To give a go at the challenge yourself, `git checkout 5c842f641f6169e38e50b21d74222e3102046d0d`
