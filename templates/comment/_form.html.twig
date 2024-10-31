@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_row(form.movie) }}
+    {{ form_row(form.title, {'label': 'Comment title'}) }}
+    {{ form_row(form.email, {'label': 'Your email'}) }}
+    {{ form_row(form.content) }}
+    {{ form_row(form.rating) }}
+    {{ form_row(form.terms, {'label': 'I accept the Terms & Conditions.'}) }}
+    <button type="submit" class="btn btn-primary">Comment</button>
+{{ form_end(form) }}
